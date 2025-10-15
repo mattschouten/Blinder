@@ -18,6 +18,22 @@
 					"TitleAlignment": "middle"
 				}
 			]
+		},
+		{
+			"Name": "Blind",
+			"UUID": "com.cybadger.blinders-plugin.blind",
+			"Icon": "imgs/actions/blind/gray-square",
+			"Tooltip": "Blocks or unblocks configured sites",
+			"PropertyInspectorPath": "ui/blinder-config.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/blind/gray-square",
+					"TitleAlignment": "middle"
+				}
+			]
 		}
 	],
 	"Category": "Blinders",
