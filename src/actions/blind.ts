@@ -1,6 +1,6 @@
 import { action, KeyDownEvent, SingletonAction, WillAppearEvent } from "@elgato/streamdeck";
 
-@action({ UUID: "com.cybadger.blinders-plugin.blind" })
+@action({ UUID: "com.cybadger.blinders-plugin.toggleblind" })
 export class Blinder extends SingletonAction<BlinderSettings> {
 	/**
 	 * Performs actions needed when the key becomes visible:
