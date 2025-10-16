@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-#LOGFILE="/var/log/com.cybadger.blinder.log"
-LOGFILE="./com.cybadger.blinder.log"
+LOGFILE="/var/log/com.cybadger.blinder.log"
+# LOGFILE="./com.cybadger.blinder.log"
 TRIGGERFILE="/tmp/com.cybadger.toggle-distractions.trigger"
-#HOSTFILE="/etc/hosts"
-HOSTFILE="./test-hosts.txt"
+HOSTFILE="/etc/hosts"
+# HOSTFILE="./test-hosts.txt"
 
 log() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$LOGFILE"
