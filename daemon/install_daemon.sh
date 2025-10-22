@@ -12,7 +12,7 @@ chmod +x "$SCRIPT_LOCATION"
 echo "Copying the plist file to $PLIST_LOCATION"
 sudo cp com.cybadger.blinder.plist "$PLIST_LOCATION"
 
-echo "Loading the daemon using launchctl:  launchctl load $PLIST_LOCATION"
+echo "Starting the daemon using launchctl:  launchctl bootstrap system $PLIST_LOCATION"
 sudo launchctl bootstrap system "$PLIST_LOCATION"
 
 # To uninstall, use 'bootout' instead of bootstrap
