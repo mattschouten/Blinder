@@ -4,14 +4,10 @@ import { BlinderSettings, setBlinding } from "../blind-interface";
 @action({ UUID: "com.cybadger.blinders-plugin.toggleblind" })
 export class Blinder extends SingletonAction<BlinderSettings> {
 	/**
-	 * Performs actions needed when the key becomes visible:
-	 *  - Checks whether "blinders are on" and sites are hosts-blocked
-	 *  - Sets icons and titles accordingly
+	 * Performs actions needed when the key becomes visible
 	 */
 	override onWillAppear(ev: WillAppearEvent<BlinderSettings>): void | Promise<void> {
 		// Shouldn't do anything:  the Blind Interface should handle it.
-		//return ev.action.setTitle("BLINDYBLIND");
-		// return ev.action.setTitle(`${ev.payload.settings.count ?? 0}`);
 	}
 
 	/**
