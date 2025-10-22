@@ -4,22 +4,6 @@
 	"Author": "Matt Schouten",
 	"Actions": [
 		{
-			"Name": "Counter",
-			"UUID": "com.cybadger.blinders-plugin.increment",
-			"Icon": "imgs/actions/counter/icon",
-			"Tooltip": "Displays a count, which increments by one on press.",
-			"PropertyInspectorPath": "ui/increment-counter.html",
-			"Controllers": [
-				"Keypad"
-			],
-			"States": [
-				{
-					"Image": "imgs/actions/counter/key",
-					"TitleAlignment": "middle"
-				}
-			]
-		},
-		{
 			"Name": "Toggle Blinding",
 			"UUID": "com.cybadger.blinders-plugin.toggleblind",
 			"Icon": "imgs/actions/blind/gray-square",
