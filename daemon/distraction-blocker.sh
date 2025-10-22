@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
+
+# This runs as a LaunchDaemon script, which runs under sh
 
 LOGFILE="/var/log/com.cybadger.blinder.log"
 # LOGFILE="./com.cybadger.blinder.log"
@@ -24,7 +26,18 @@ if [ ! -f "$TRIGGERFILE" ]; then
     # Nonzero exit code leads to launchd continuing to watch the trigger file
 fi
 
-ACTION=$(cat "$TRIGGERFILE" 2>/dev/null)
+# Read the trigger file into ACTION and DOMAINS variables
+DOMAINS=
+i=0
+while IFS= read -r line || [ -n "$line" ]; do
+    if [ $i -eq 0 ]; then
+        ACTION=$line
+    else
+        DOMAINS="$DOMAINS $line"
+    fi
+    i=$((i + 1))
+done < "$TRIGGERFILE"
+
 
 case "$ACTION" in
     blind)
@@ -33,13 +46,13 @@ case "$ACTION" in
             log "Already blocked!  No action required."
         else
             # The distraction block is not present.  Add the block to the hosts file.
-            cat >> "$HOSTFILE" << 'EOF'
-# BLINDER_DISTRACTION_BLOCK_START
-127.0.0.1 reddit.com
-127.0.0.1 old.reddit.com
-127.0.0.1 news.ycombinator.com
-# BLINDER_DISTRACTION_BLOCK_END
-EOF
+
+            echo "# BLINDER_DISTRACTION_BLOCK_START" >> "$HOSTFILE"
+            for item in $DOMAINS; do
+                echo "127.0.0.1 ${item}" >> "$HOSTFILE"
+            done
+            echo "# BLINDER_DISTRACTION_BLOCK_END" >> "$HOSTFILE"
+
             log "Blocking enabled"
         fi
         ;;

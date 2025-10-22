@@ -24,7 +24,7 @@
 			"UUID": "com.cybadger.blinders-plugin.toggleblind",
 			"Icon": "imgs/actions/blind/gray-square",
 			"Tooltip": "Blocks or unblocks configured sites",
-			"PropertyInspectorPath": "ui/blinder-config.html",
+			"PropertyInspectorPath": "ui/set-domains.html",
 			"Controllers": [
 				"Keypad"
 			],

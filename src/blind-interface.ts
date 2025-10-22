@@ -10,6 +10,7 @@ export type BlinderSettings = {
 const logger: Logger = streamDeck.logger.createScope("BlindInterface");
 const blindChecker: BlindChecker = new BlindChecker();
 const settings: BlinderSettings = { shouldBlind: true, isBlind: true };
+let domainList: string[] = [];
 
 addEventListeners();
 
@@ -60,7 +61,8 @@ function setKeyStatus(isBlind: boolean) {
 }
 
 export function setBlinding(shouldBlind: boolean) {
-    let text = (shouldBlind) ? 'blind' : 'unblind';
+    let text = ((shouldBlind) ? 'blind' : 'unblind') +
+               "\n" + domainListToTriggerText() + "\n";
 
     logger.info(`Request to ${text}`);
     writeFile('/tmp/com.cybadger.toggle-distractions.trigger', text, (err)  => {
@@ -71,3 +73,16 @@ export function setBlinding(shouldBlind: boolean) {
         }
     });
 }
+
+export function onDomainList(newDomainList: string) {
+    // Split on whitespace, commas, or semicolons
+    let domains = newDomainList.split(/[\s,;]+/);
+    domainList = domains;
+}
+
+function domainListToTriggerText(): string {
+    return domainList.join("\n");
+}
+
+// TODO:  If settings don't exist, or are blank, set a default.
+// TODO:  Get the settings when starting up

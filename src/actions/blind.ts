@@ -1,5 +1,5 @@
-import { action, KeyDownEvent, SingletonAction, WillAppearEvent } from "@elgato/streamdeck";
-import { BlinderSettings, setBlinding } from "../blind-interface";
+import { action, DidReceiveSettingsEvent, JsonObject, KeyDownEvent, SingletonAction, WillAppearEvent } from "@elgato/streamdeck";
+import { BlinderSettings, onDomainList, setBlinding } from "../blind-interface";
 
 @action({ UUID: "com.cybadger.blinders-plugin.toggleblind" })
 export class Blinder extends SingletonAction<BlinderSettings> {
