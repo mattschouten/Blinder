@@ -29,6 +29,16 @@ On your Stream Deck, it'll give you a "Toggle Blinding" key.
 | Green     | Blinders On!    | No                  | Begin blocking         |
 | Red       | Remove Blinders | Yes                 | Stop blocking          |
 
+### Configuring the Site List
+
+The sites that distract you might be different than the sites that distract me.
+
+The list of sites is configurable within the Stream Deck application.  After adding the `Toggle Blinding` action to a button in the Stream Deck application (or clicking the button in the app), the button configuration will show.
+
+Add domains, one per line.  Note that if you change the list of domains, it will not take effect until the next time you hit the button to block.
+
+![Screenshot of plugin configuration in Stream Deck application](configuration.png)
+
 ## How it Works
 
 The plugin works by signaling a LaunchDaemon [script](./daemon/distraction-blocker.sh) that is [configured](./daemon/com.cybadger.blinder.plist) to watch `/tmp/com.cybadger.toggle-distractions.trigger`
